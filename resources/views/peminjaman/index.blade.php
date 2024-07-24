@@ -22,7 +22,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <h4 class="card-title">Data Barang</h4>
+            <h4 class="card-title" style="color: #000">Data Barang</h4>
             <a href="{{ route('peminjaman.create') }}" class="btn btn-md btn-info" style="float: right">Tambah Data</a>
             <div class="table-responsive">
                 <table class="table" id="example">
@@ -30,7 +30,6 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Barang</th>
-                            <th>Merek</th>
                             <th>Jumlah</th>
                             <th>Tanggal Pinjam</th>
                             <th>Tanggal Kembali</th>
@@ -47,7 +46,6 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data->pusat->nama }}</td>
-                                <td>{{ $data->pusat->merek }}</td>
                                 <td>{{ $data->jumlah }}</td>
                                 <td>{{ $data->formatted_tanggal_pinjam }}</td>
                                 <td>{{ $data->formatted_tanggal_kembali }}</td>
@@ -59,8 +57,8 @@
                                         @method('DELETE')
                                         <a href="{{ route('peminjaman.edit', $data->id) }}"
                                             class="btn btn-success">Edit</a>
-                                        <a href="{{ route('peminjaman.show', $data->id) }}"
-                                            class="btn btn-warning">Show</a>
+                                        {{-- <a href="{{ route('peminjaman.show', $data->id) }}"
+                                            class="btn btn-warning">Show</a> --}}
                                         <a href="{{ route('peminjaman.destroy', $data->id) }}" type="submit" class="btn btn-danger" data-confirm-delete="true">
                                             Delete
                                         </a>

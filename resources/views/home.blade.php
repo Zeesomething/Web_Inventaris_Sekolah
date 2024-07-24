@@ -5,13 +5,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex flex-row justify-content-center">
-                        <h1 class="card-title mb-1">Selamat Datang, {{ Auth::user()->name }}</h1>
+                        <img src="{{ asset('admin/assets/images/logo smk.png') }}" alt="" width="19%">
+                        {{-- <h1 class="card-title mb-1" style="color: #000">Selamat Datang, {{ Auth::user()->name }}</h1> --}}
                     </div>
                     <center>
                         <div class="d-flex flex-row justify-content-center">
                             <div class="col-12">
-                                <h4 class="card-title mt-5">Selamat datang di Web Inventaris Sekolah</h4>
-                                <h4 class="card-title mt-2">Ini adalah halaman dashboard</h4>
+                                <h2 class="card-title" style="color: #000">Sistem Inventaris Barang</h2>
+                                <h4 class="card-title mt-2" style="color: #000">SMK ASSALAAM BANDUNG</h4>
                             </div>
                         </div>
                     </center>
@@ -73,7 +74,7 @@
 
                             </div>
                             <a href="{{ route('barangkeluar.index') }}" class="btn btn-primary btn-sm mt-2">Lihat</a>
-                            
+
                         </div>
                         <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                             <div class="icon icon-box-danger">
@@ -97,7 +98,7 @@
 
                             </div>
                             <a href="{{ route('pengembalian.index') }}" class="btn btn-primary btn-sm mt-2">Lihat</a>
-                          
+
                         </div>
                         <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                             <div class="icon icon-box-success">
@@ -119,7 +120,7 @@
 
                             </div>
                             <a href="{{ route('peminjaman.index') }}" class="btn btn-primary btn-sm mt-2">Lihat</a>
-                            
+
                         </div>
                         <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                             <div class="icon icon-box-danger">

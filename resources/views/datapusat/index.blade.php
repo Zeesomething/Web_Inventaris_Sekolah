@@ -22,7 +22,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <h4 class="card-title">Data Barang</h4>
+            <h4 class="card-title" style="color: #000">Data Barang</h4>
 
             <a href="{{ route('datapusat.create') }}" class="btn btn-md btn-info" style="float: right">Tambah Data</a>
 
@@ -52,7 +52,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('datapusat.edit', $data->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ route('datapusat.show', $data->id) }}" class="btn btn-warning">Show</a>
+                                        {{-- <a href="{{ route('datapusat.show', $data->id) }}" class="btn btn-warning">Show</a> --}}
                                         <a href="{{ route('datapusat.destroy', $data->id) }}" type="submit" class="btn btn-danger" data-confirm-delete="true">
                                             Delete
                                         </a>

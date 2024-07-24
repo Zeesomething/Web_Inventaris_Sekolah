@@ -11,7 +11,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <h4 class="card-title">Data Barang</h4>
+            <h4 class="card-title" style="color: #000">Data Barang</h4>
 
             <a href="{{ route('barangkeluar.create') }}" class="btn btn-md btn-info" style="float: right">Tambah Data</a>
 
@@ -21,7 +21,6 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Barang</th>
-                            <th>Merek</th>
                             <th>Jumlah</th>
                             <th>Tanggal Keluar</th>
                             <th>Jumlah</th>
@@ -36,7 +35,6 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $data->pusat->nama }}</td>
-                                <td>{{ $data->pusat->merek }}</td>
                                 <td>{{ $data->jumlah }}</td>
                                 <td>{{ $data->formatted_tanggal }}</td>
                                 <td>{{ $data->ket }}</td>
@@ -47,8 +45,8 @@
 
                                         <a href="{{ route('barangkeluar.edit', $data->id) }}"
                                             class="btn btn-success">Edit</a>
-                                        <a href="{{ route('barangkeluar.show', $data->id) }}"
-                                            class="btn btn-warning">Show</a>
+                                        {{-- <a href="{{ route('barangkeluar.show', $data->id) }}"
+                                            class="btn btn-warning">Show</a> --}}
                                         <a href="{{ route('barangkeluar.destroy', $data->id) }}"
                                             class="btn btn-danger" data-confirm-delete="true">
                                             Delete

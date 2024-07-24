@@ -22,7 +22,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <h4 class="card-title">Data Barang</h4>
+            <h4 class="card-title" style="color: #000">Data Barang</h4>
             <div class="table-responsive">
                 <table class="table" id="example">
                     <thead>
