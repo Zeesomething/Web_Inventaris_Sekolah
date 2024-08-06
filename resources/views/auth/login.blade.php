@@ -98,15 +98,21 @@
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="row w-100 m-0">
-                <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+                <div class="content-wrapper full-page-wrapper d-flex align-items-center">
                     <div class="card col-lg-4 mx-auto">
+                        @if (session('success'))
+                        <div class="alert alert-success fade show" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                         <div class="card-body px-5 py-5">
-                            <h3 class="card-title text-left mb-3">Login</h3>
+                            <img src="{{asset('Admin/assets/images/logo smk.png')}}" alt="" width="150" height="120">
+                            {{-- <h3 class="card-title text-center mb-3" style="color: #000">Login</h3> --}}
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Username or email *</label>
-                                    <input id="email" type="email" style="background-color: #f5f5f5"
+                                    <label>Username or email</label>
+                                    <input id="email" type="email" style="background-color: #f5f5f5; color:#000;"
                                         class="form-control p_input @error('email') is-invalid @enderror"
                                         name="email">
                                     @error('email')
@@ -116,8 +122,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Password *</label>
-                                    <input id="password" type="password" style="background-color: #f5f5f5"
+                                    <label>Password</label>
+                                    <input id="password" type="password" style="background-color: #f5f5f5; color:#000"
                                         class="form-control p_input @error('password') is-invalid @enderror"
                                         name="password">
                                     @error('password')
