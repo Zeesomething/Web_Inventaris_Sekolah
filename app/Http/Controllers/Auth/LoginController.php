@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -29,15 +28,14 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        // Add custom validation for username and password fields
+        // Custom validation for email and password fields
         $validator = Validator::make($request->all(), [
-            'email' => 'required|exists:users,email|string',
-            'password' => 'required|exists:users,password|string',
+            'email' => 'required|email|exists:users,email|string',
+            'password' => 'required|string',
         ], [
-            'email.required' => 'Username Harus Diisi',
+            'email.required' => 'Email Harus Diisi',
+            'email.exists' => 'Email tidak ditemukan',
             'password.required' => 'Password Harus Diisi',
-            'email.exists' => 'Username Salah',
-            'password.exists' => 'Password Salah',
         ]);
 
         if ($validator->fails()) {
@@ -58,20 +56,35 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request),
-            $request->filled('remember')
-        );
+        return Auth::attempt($this->credentials($request), $request->filled('remember'));
     }
 
     /**
-     * Get the login credentials and include username and password.
+     * Get the login credentials and include email and password.
      *
      * @param \Illuminate\Http\Request $request
      * @return array
      */
     protected function credentials(Request $request)
     {
-        return $request->only('username', 'password');
+        return [
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+        ];
+    }
+
+    /**
+     * Send the response after the user was failed to login.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $errors = ['email' => 'Kombinasi email dan password salah.'];
+
+        return redirect()->back()
+            ->withInput($request->only('email', 'remember'))
+            ->withErrors($errors);
     }
 }
